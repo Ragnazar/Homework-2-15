@@ -3,13 +3,15 @@ package pro.sky;
 import pro.sky.services.IntegerList;
 import pro.sky.services.IntegerListImpl;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         IntegerList integerList = new IntegerListImpl();
         Integer[] arr = generateRandomArray();
-        Integer[] arr1 = arr;
-        Integer[] arr2 = arr;
-        Integer[] arr3 = arr;
+        Integer[] arr1 = Arrays.copyOf(arr,100000);
+        Integer[] arr2 = Arrays.copyOf(arr,100000);
+        Integer[] arr3 = Arrays.copyOf(arr,100000);
 
         long start = System.currentTimeMillis();
         integerList.swapSort(arr1);
@@ -28,7 +30,7 @@ public class Main {
 
     public static Integer[] generateRandomArray() {
         java.util.Random random = new java.util.Random();
-        Integer[] arr = new Integer[1000];
+        Integer[] arr = new Integer[100000];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(100_000) + 100_000;
         }
